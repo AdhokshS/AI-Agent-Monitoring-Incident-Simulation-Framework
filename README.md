@@ -1,108 +1,77 @@
-AI Agent Monitoring & Incident Simulation Framework
-Overview
+# 🏥 AI Agent Monitoring & Incident Simulation Framework
 
-This project simulates a safety-first AI agent system for healthcare workflows, focused on post-discharge patient follow-up.
+## 🚀 Overview
+This project simulates a **safety-first AI agent system for healthcare workflows**, focused on post-discharge patient follow-up.
 
-The system is designed to demonstrate how AI agents should be monitored, controlled, and escalated in production environments, particularly in safety-critical domains like healthcare.
+The goal is not just to generate responses, but to demonstrate how AI agents should be **monitored, controlled, and escalated in production environments**, especially in safety-critical domains like healthcare.
 
-Architecture
+---
 
-The system is built with four core layers:
+## 🧠 Core Idea
 
-1. Agent Layer
+> AI in healthcare should not just be intelligent — it must be **observable, safe, and operationally reliable**.
 
-Handles patient interaction using LLM (Groq)
+This system reflects how AI agents should behave:
+- ✅ Assist, not diagnose  
+- ✅ Escalate when uncertain  
+- ✅ Be monitored continuously  
+- ✅ Operate within strict safety boundaries  
 
-Produces structured output (response, confidence)
+---
 
-2. Guardrail Layer
+## 🏗️ System Architecture
 
-Enforces safety constraints
+The system is designed with **four core layers**:
 
-Prevents diagnosis and medical advice
+### 1️⃣ Agent Layer
+- Handles patient interaction using LLM (Groq)
+- Generates structured output (response + confidence)
 
-Detects high-risk symptoms and forces escalation
+### 2️⃣ Guardrail Layer
+- Enforces safety constraints
+- Prevents diagnosis and medical advice
+- Detects high-risk symptoms (e.g., fever, chills)
+- Forces escalation when risk is detected
 
-3. Telemetry Layer
+### 3️⃣ Telemetry Layer
+- Logs operational signals:
+  - Response latency  
+  - Confidence score  
+  - Escalation flags  
+- Stores structured logs in SQLite
 
-Logs system behavior (latency, confidence, escalation)
+### 4️⃣ Monitoring Layer
+- Evaluates recent system behavior
+- Simulates production alerting logic:
 
-Stores structured logs in SQLite
+| Severity | Trigger Condition |
+|--------|----------------|
+| 🔴 P1 (Critical) | Repeated escalations |
+| 🟡 P2 (Warning) | Latency spike / low confidence |
+| 🟢 P3 (Normal) | Stable system behavior |
 
-4. Monitoring Layer
+---
 
-Evaluates recent system activity
+## ⚙️ Example Flow
 
-Generates severity-based alerts:
+1. Patient reports symptoms  
+2. Agent generates structured response  
+3. Guardrails validate safety  
+4. System logs telemetry  
+5. Monitoring layer evaluates patterns  
+6. Alerts triggered based on system behavior  
 
-P1: Critical (repeated escalations)
+---
 
-P2: Warning (latency / confidence issues)
+## 🔒 Safety Design Principles
 
-P3: Normal operation
+- ❌ No diagnosis  
+- ❌ No medical advice  
+- ✅ Escalate when uncertain  
+- ✅ Prioritize patient safety over response quality  
 
-Key Features
+---
 
-Safety-first AI behavior (non-diagnostic)
+## 🧪 Sample Test Cases
 
-Deterministic guardrails over LLM outputs
-
-Confidence-aware escalation logic
-
-Structured telemetry logging
-
-Alert simulation (P1 / P2 / P3)
-
-Incident-style system behavior
-
-Example Flow
-
-User reports symptoms
-
-Agent generates structured response
-
-Guardrails validate safety
-
-System logs telemetry
-
-Monitoring layer evaluates patterns
-
-Alerts triggered based on system behavior
-
-Why This Matters
-
-In healthcare AI systems:
-
-Accuracy alone is not sufficient
-
-Safety, monitoring, and escalation are critical
-
-This project demonstrates how AI systems should be:
-
-Observed
-
-Controlled
-
-Integrated into operational workflows
-
-Tech Stack
-
-Python
-
-Groq API (LLM)
-
-SQLite
-
-Streamlit (planned)
-
-Future Enhancements
-
-Real-time monitoring dashboard
-
-Note: API keys are managed via environment variables and are not stored in the repository.
-
-Alert visualization
-
-SLA tracking
-
-Incident playbooks
+### 🔴 High-Risk Input
