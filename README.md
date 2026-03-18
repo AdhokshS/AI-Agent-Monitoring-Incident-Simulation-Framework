@@ -99,6 +99,8 @@ Future Enhancements
 
 Real-time monitoring dashboard
 
+Note: API keys are managed via environment variables and are not stored in the repository.
+
 Alert visualization
 
 SLA tracking
